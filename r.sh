@@ -1,2 +1,3 @@
 #!/bin/bash
-git add . && git commit -m "Checking c9" && git push
+read message
+git add . && git commit -m $message && git push
