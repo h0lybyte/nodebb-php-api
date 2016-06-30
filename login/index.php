@@ -1,6 +1,11 @@
 <?php
-// Login - Strictly incharge of handling all the "login" data ; eventually it will support Oauth and really c9, no spll check
+// Register - Strictly incharge of handling all the "login" data ; eventually it will support Oauth and really c9, no spll check
        
+       
+       // Important
+       
+       $auth = ""; // Auth ensures the call is from a trusted source
+       $key = ""; // Key is the Write-API Master Token
        
        
      /**
@@ -20,41 +25,43 @@
                 return json_decode(file_get_contents("php://input"));
         }
         
+        function t($m)
+        {
+             
+        echo json_encode(array("status" => true, "data" => $m), JSON_UNESCAPED_SLASHES);
+        exit;
+        }
+        
+        function f($m)
+        {
+             
+        echo json_encode(array("status" => false, "data" => $m), JSON_UNESCAPED_SLASHES);
+        exit;
+        }
+        
         @$data = @h0();
         @$command = @$data->command;
         @$u = @$data->u;
         @$p = @$data->p;
-
-
-// login script start(); @IDE
+        @$e = @$data->e;
+        @$a = @$data->a;
         
-        $url = 'http://10.0.3.234:4567/api/login/ns';
-        $fields = array(
-        	'username' => urlencode(@$u),
-        	'password' => urlencode(@$p)
-        );
+        if(@$a != $auth) { f("Error: Auth Incorrect"); }
         
-        //url-ify the data for the POST
-        foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-        rtrim($fields_string, '&');
+        $array = array(
+               '_uid' => '1',
+               'username' => @$u,
+        	   'password' =>  @$p,
+        	   'email' => @$e
+           );
+        $final = hP($array);
         
-        //open connection
-        $ch = curl_init();
+//   print_r($final);
+          
+            $r = shell_exec('curl -H "Authorization: Bearer '.$key.'" --data "'.$final.'" http://10.0.3.234:4567/api/v1/topics');
+            t($r);
+       
         
-        //set the url, number of POST vars, POST data
-        curl_setopt($ch,CURLOPT_URL, $url);
-        curl_setopt($ch,CURLOPT_POST, count($fields));
-        curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-        
-        //execute post
-        $result = curl_exec($ch);
-        print_r($result);
-        //close connection
-        curl_close($ch);
-        
-      //  $final = array("status" => true, "data" => $result);
-    //    echo json_encode($final, JSON_UNESCAPED_SLASHES);
-        exit;
                 
 
 ?>
