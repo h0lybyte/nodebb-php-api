@@ -28,7 +28,7 @@
 
 // login script start(); @IDE
         
-        $url = 'http://10.0.3.234:4567/api/login/ns';
+        $url = 'https://kbve.com/api/login/ns';
         $fields = array(
         	'username' => urlencode(@$u),
         	'password' => urlencode(@$p)
