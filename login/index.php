@@ -29,8 +29,6 @@
 // login script start(); @IDE
         
         $url = 'http://10.0.3.234:4567/api/login/ns';
-        print_r(file_get_contents($url));
-        exit;
         $fields = array(
         	'username' => urlencode(@$u),
         	'password' => urlencode(@$p)
