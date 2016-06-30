@@ -41,7 +41,7 @@
         
         @$data = @h0();
         @$command = @$data->command;
-        @$u = @$data->u;a
+        @$u = @$data->u;
         @$p = @$data->p;
         @$e = @$data->e;
         @$a = @$data->a;
@@ -59,7 +59,7 @@
 //   print_r($final);
           
             $r = shell_exec('curl -H "Authorization: Bearer '.$key.'" --data "'.$final.'" http://10.0.3.234:4567/api/v1/topics');
-            t($r);
+            print_r($r);
        
         
                 
