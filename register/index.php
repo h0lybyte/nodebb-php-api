@@ -59,8 +59,8 @@
         
 //   print_r($final);
           
-            $r = shell_exec('curl -H "Authorization: Bearer '.$key.'" --data "'.$final.'" http://10.0.3.234:4567/api/v1/topics');
-            print_r($r);
+            $r = shell_exec('curl -H "Authorization: Bearer '.$key.'" --data "'.$final.'" http://10.0.3.234:4567/api/v1/users');
+            t($r);
        
         
                 
