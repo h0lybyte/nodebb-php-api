@@ -1,4 +1,9 @@
 <?php
+        header('Content-Type: application/json');
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, POST");
+        header("Access-Control-Allow-Headers: Content-Type, *");
 // Register - Strictly incharge of handling all the "login" data ; eventually it will support Oauth and really c9, no spll check
        
        
@@ -13,11 +18,7 @@
       * 
       **/
        
-        header('Content-Type: application/json');
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Credentials: true");
-        header("Access-Control-Allow-Methods: GET, POST");
-        header("Access-Control-Allow-Headers: Content-Type, *");
+      
         
         // Function h0 handles all inputs (includes json_decode)
         function h0()
