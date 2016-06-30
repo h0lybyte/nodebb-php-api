@@ -48,12 +48,12 @@
         
         //execute post
         $result = curl_exec($ch);
-        
+        print_r($result);
         //close connection
         curl_close($ch);
         
-        $final = array("status" => true, "data" => $result);
-        echo json_encode($final, JSON_UNESCAPED_SLASHES);
+      //  $final = array("status" => true, "data" => $result);
+    //    echo json_encode($final, JSON_UNESCAPED_SLASHES);
         exit;
                 
 
