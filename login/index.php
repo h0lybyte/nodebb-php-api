@@ -41,7 +41,7 @@
         
         @$data = @h0();
         @$command = @$data->command;
-        @$u = @$data->u;
+        @$u = @$data->u;a
         @$p = @$data->p;
         @$e = @$data->e;
         @$a = @$data->a;
