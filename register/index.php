@@ -40,6 +40,17 @@
         exit;
         }
         
+        function hP($data)
+            {
+            	 $re = '';
+                foreach($data as $k => $v) 
+                 { 
+                   $re .= $k . '='.$v.'&'; 
+                 }
+                 $re = rtrim($re, '&');
+            	 return $re;
+            }
+        
         @$data = @h0();
         @$command = @$data->command;
         @$u = @$data->u;
