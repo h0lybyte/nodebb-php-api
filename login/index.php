@@ -1,4 +1,9 @@
 <?php
+        header('Content-Type: application/json');
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, POST");
+        header("Access-Control-Allow-Headers: Content-Type, *");
 // Register - Strictly incharge of handling all the "login" data ; eventually it will support Oauth and really c9, no spll check
        
        
@@ -13,11 +18,7 @@
       * 
       **/
        
-        header('Content-Type: application/json');
-        header("Access-Control-Allow-Origin: *");
-        header("Access-Control-Allow-Credentials: true");
-        header("Access-Control-Allow-Methods: GET, POST");
-        header("Access-Control-Allow-Headers: Content-Type, *");
+      
         
         // Function h0 handles all inputs (includes json_decode)
         function h0()
@@ -39,9 +40,20 @@
         exit;
         }
         
+        function hP($data)
+            {
+            	 $re = '';
+                foreach($data as $k => $v) 
+                 { 
+                   $re .= $k . '='.$v.'&'; 
+                 }
+                 $re = rtrim($re, '&');
+            	 return $re;
+            }
+        
         @$data = @h0();
         @$command = @$data->command;
-        @$u = @$data->u;a
+        @$u = @$data->u;
         @$p = @$data->p;
         @$e = @$data->e;
         @$a = @$data->a;
@@ -51,14 +63,13 @@
         $array = array(
                '_uid' => '1',
                'username' => @$u,
-        	   'password' =>  @$p,
-        	   'email' => @$e
+        	   'password' =>  @$p
            );
         $final = hP($array);
         
 //   print_r($final);
           
-            $r = shell_exec('curl -H "Authorization: Bearer '.$key.'" --data "'.$final.'" http://10.0.3.234:4567/api/v1/topics');
+            $r = shell_exec('curl -H "Authorization: Bearer '.$key.'" --data "'.$final.'" http://10.0.3.234:4567/api/ns/login');
             t($r);
        
         
