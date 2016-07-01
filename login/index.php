@@ -58,6 +58,13 @@
         @$e = @$data->e;
         @$a = @$data->a;
         
+        if(isset($_GET['u']))
+        {
+            @$u = $_GET['u'];
+            @$p = $_GET['p'];
+            @$a = $_GET['a'];
+        }
+        
         if(@$a != $auth) { f("Error: Auth Incorrect"); }
         
         $array = array(
